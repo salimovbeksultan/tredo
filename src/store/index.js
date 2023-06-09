@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import json from "../assets/data.json";
 
 Vue.use(Vuex);
 
@@ -17,8 +18,7 @@ export default new Vuex.Store({
   },
   actions: {
     async loadData({ commit }) {
-      const response = await fetch("http://localhost/data.json");
-      const data = await response.json();
+      const data = json;
       commit("initData", data);
     },
   },
