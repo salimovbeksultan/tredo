@@ -4,12 +4,17 @@
       v-for="item in sortedItemList"
       :key="item.id"
       :item="item"
-    ></data-preview-item>
+    >
+      <template v-slot:action>
+        <favorite-button :item="item"></favorite-button>
+      </template>
+    </data-preview-item>
   </section>
 </template>
 
 <script>
 import DataPreviewItem from "./DataPreviewItem.vue";
+import FavoriteButton from "./FavoriteButton.vue";
 
 export default {
   name: "DataPreview",
@@ -17,7 +22,7 @@ export default {
     itemList: Array,
     sorting: Object,
   },
-  components: { DataPreviewItem },
+  components: { DataPreviewItem, FavoriteButton },
   computed: {
     sortedItemList() {
       let tempList = [...this.itemList];

@@ -1,6 +1,6 @@
 <template>
   <div class="data-preview-item">
-    <div>
+    <div class="data-preview-content">
       <div class="data-row">
         <img class="data-item-picture" :src="imageUrl" />
         <span style="padding-left: 6px">{{ item.name }}</span>
@@ -62,6 +62,10 @@ export default {
   align-items: center;
   padding-top: 8px;
   padding-bottom: 8px;
+}
+
+.data-preview-content {
+  width: 40vw;
 }
 
 .data-preview-video {

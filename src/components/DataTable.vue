@@ -1,19 +1,20 @@
 <template>
   <table class="data-table">
-    <data-item
-      v-for="item in sortedItemList"
-      :key="item.id"
-      :item="item"
-    ></data-item>
+    <data-item v-for="item in sortedItemList" :key="item.id" :item="item">
+      <template v-slot:action>
+        <favorite-button :item="item"></favorite-button>
+      </template>
+    </data-item>
   </table>
 </template>
 
 <script>
 import DataItem from "./DataItem.vue";
+import FavoriteButton from "./FavoriteButton.vue";
 
 export default {
   name: "DataTable",
-  components: { DataItem },
+  components: { DataItem, FavoriteButton },
   props: {
     itemList: Array,
     sorting: Object,

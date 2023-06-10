@@ -12,7 +12,7 @@
     <td>
       <div>{{ item.phone }}</div>
     </td>
-    <td><slot name="actions"></slot></td>
+    <td><slot name="action"></slot></td>
   </tr>
 </template>
 
