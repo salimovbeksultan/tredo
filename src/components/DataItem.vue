@@ -1,5 +1,5 @@
 <template>
-  <tr class="data-item">
+  <tr v-show="fitsQuery" class="data-item">
     <td class="picture-column">
       <img class="data-item-picture" :src="imageUrl" />
     </td>
@@ -26,6 +26,22 @@ export default {
     imageUrl() {
       return require(`../assets/images/${this.item.image}.svg`);
     },
+    fitsQuery() {
+      console.log(this.query);
+      let tempQuery = this.query.toLowerCase();
+      let tempName = this.item.name.toLowerCase();
+
+      return tempName.includes(tempQuery);
+    },
+  },
+  inject: {
+    query: {
+      from: "query",
+      default: "",
+    },
+  },
+  created() {
+    console.log(this.query);
   },
 };
 </script>

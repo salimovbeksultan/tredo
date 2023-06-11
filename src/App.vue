@@ -4,6 +4,9 @@
       <data-sorting v-model="sorting"></data-sorting>
       <data-mode v-model="mode"></data-mode>
     </div>
+    <div class="data-page-row">
+      <input v-model="searchQuery" type="text" />
+    </div>
     <data-table
       v-if="mode === 'table'"
       :sorting="sorting"
@@ -22,6 +25,7 @@ import DataTable from "./components/DataTable.vue";
 import DataSorting from "./components/DataSorting.vue";
 import DataMode from "./components/DataMode.vue";
 import DataPreview from "./components/DataPreview.vue";
+import { computed } from "vue";
 
 export default {
   name: "App",
@@ -36,6 +40,12 @@ export default {
         order: "asc",
       },
       mode: "table",
+      searchQuery: "",
+    };
+  },
+  provide() {
+    return {
+      query: computed(() => this.searchQuery),
     };
   },
 };
@@ -48,5 +58,6 @@ export default {
 
 .data-page-row {
   display: flex;
+  padding-bottom: 8px;
 }
 </style>
