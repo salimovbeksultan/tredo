@@ -1,5 +1,5 @@
 <template>
-  <div class="data-preview-item">
+  <div v-show="fitsQuery" class="data-preview-item">
     <div class="data-preview-content">
       <div class="data-row">
         <img class="data-item-picture" :src="imageUrl" />
@@ -36,6 +36,19 @@ export default {
       if (this.item.video)
         return require(`../assets/videos/${this.item.video}.mp4`);
       else return null;
+    },
+    fitsQuery() {
+      console.log(this.query);
+      let tempQuery = this.query.toLowerCase();
+      let tempName = this.item.name.toLowerCase();
+
+      return tempName.includes(tempQuery);
+    },
+  },
+  inject: {
+    query: {
+      from: "query",
+      default: "",
     },
   },
 };
